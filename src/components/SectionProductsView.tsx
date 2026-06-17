@@ -18,11 +18,13 @@ interface Props {
   subtitle?: string;
   /** Coming-soon copy when no product has been added yet. */
   comingSoon: string;
+  /** Optional title for the empty / coming-soon state. */
+  comingSoonTitle?: string;
   /** Icon shown in the empty / coming-soon state. */
   icon: keyof typeof icons;
 }
 
-export function SectionProductsView({ section, title, subtitle, comingSoon, icon }: Props) {
+export function SectionProductsView({ section, title, subtitle, comingSoon, comingSoonTitle, icon }: Props) {
   const Icon = icons[icon];
   const data = useAdminData();
   const meta = getSection(section);
@@ -33,14 +35,14 @@ export function SectionProductsView({ section, title, subtitle, comingSoon, icon
       <PageHeader eyebrow={meta?.label ?? title} title={title} subtitle={subtitle} />
 
       {!data.ready ? (
-        <div className="container-max py-24 text-center text-on-surface-variant">Chargement…</div>
+        <div className="container-max py-24 text-center text-on-surface-variant">Chargement...</div>
       ) : items.length === 0 ? (
         <section className="container-max flex flex-col items-center py-24 text-center">
           <span className="mb-6 grid h-20 w-20 place-items-center rounded-full bg-primary-container/10 text-primary-container">
             <Icon className="h-10 w-10" />
           </span>
           <h2 className="mb-4 font-display text-headline-lg text-primary-container">
-            Page en cours d&apos;implémentation
+            {comingSoonTitle ?? "Page en cours d'implementation"}
           </h2>
           <p className="mx-auto mb-8 max-w-xl text-on-surface-variant">{comingSoon}</p>
           <Link href="/support" className="btn-solid">
