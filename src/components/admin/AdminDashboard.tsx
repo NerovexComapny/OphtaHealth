@@ -258,6 +258,7 @@ function ProductForm({ product, onClose }: { product: Product | null; onClose: (
   );
   const [uploading, setUploading] = useState<"image" | "gallery" | "brochure" | null>(null);
   const [saving, setSaving] = useState(false);
+  const [hasBrochure, setHasBrochure] = useState(!!form.brochure);
 
   const section = data.sections.find((s) => s.slug === form.section);
 
@@ -320,7 +321,7 @@ function ProductForm({ product, onClose }: { product: Product | null; onClose: (
     const slug = isEdit ? form.slug : slugify(form.name);
     setSaving(true);
     try {
-      await saveProduct({ ...form, slug }, product?.slug);
+      await saveProduct({ ...form, slug, brochure: hasBrochure ? form.brochure : undefined }, product?.slug);
       onClose();
     } catch (err) {
       notifyError(err);
@@ -449,7 +450,7 @@ function ProductForm({ product, onClose }: { product: Product | null; onClose: (
 
         {/* Brochure (PDF) — uploaded to ImageKit, URL stored in Supabase */}
         <Field label="Brochure">
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col gap-3">
             <input
               type="file"
               accept="application/pdf"
