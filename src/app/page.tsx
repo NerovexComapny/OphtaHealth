@@ -30,7 +30,7 @@ export default async function HomePage() {
       <section className="border-b border-outline-variant bg-surface-gray px-margin-edge py-16">
         <div className="mx-auto max-w-container-max">
           <div className="mb-10 flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <h2 className="font-display text-headline-lg text-primary-container">Produits en vedette</h2>
+            <h2 className="font-display text-headline-lg text-primary-container">Produits</h2>
             <Link href="/catalogue" className="inline-flex items-center gap-1 font-medium text-primary-container hover:text-primary">
               {t("seeAllCatalog")}
               <ArrowRight className="h-4 w-4" />

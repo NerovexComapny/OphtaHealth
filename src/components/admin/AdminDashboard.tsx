@@ -370,7 +370,7 @@ function ProductForm({ product, onClose }: { product: Product | null; onClose: (
             </select>
           </Field>
           {section && section.subcategories.length > 0 && (
-            <Field label="Type (catégorie)">
+            <Field label="Type">
               <select className={inputCls} value={form.subcategory} onChange={(e) => set("subcategory", e.target.value)}>
                 {section.subcategories.map((sc) => (
                   <option key={sc.slug} value={sc.slug}>{sc.name}</option>
@@ -381,7 +381,7 @@ function ProductForm({ product, onClose }: { product: Product | null; onClose: (
         </div>
 
         {/* Image — uploaded to ImageKit (signed), URL stored in Supabase */}
-        <Field label="Image principale (couverture)">
+        <Field label="Image principale">
           <div className="flex items-center gap-4">
             <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded border border-outline-variant bg-surface-container-low">
               {form.image && <Image src={form.image} alt="" fill className="object-contain p-1" />}
@@ -409,7 +409,7 @@ function ProductForm({ product, onClose }: { product: Product | null; onClose: (
         </Field>
 
         {/* Gallery — extra images (one or many); the main image above is the cover */}
-        <Field label="Galerie (images supplémentaires)">
+        <Field label="Galerie">
           <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center gap-3">
               <input
@@ -508,10 +508,10 @@ function ProductForm({ product, onClose }: { product: Product | null; onClose: (
           </div>
         </Field>
 
-        <Field label="Accroche (affichée dans le carrousel d'accueil)">
+        <Field label="Accroche">
           <input className={inputCls} value={form.taglineFr} onChange={(e) => set("taglineFr", e.target.value)} />
         </Field>
-        <Field label="Description (les retours à la ligne sont conservés)">
+        <Field label="Description">
           <textarea className={inputCls} rows={8} value={form.descriptionFr} onChange={(e) => set("descriptionFr", e.target.value)} />
         </Field>
 
@@ -1025,7 +1025,7 @@ function ArticleForm({ article, onClose }: { article: Article | null; onClose: (
         </Field>
 
         {/* PDF — l'article peut être un document à consulter/télécharger */}
-        <Field label="Document PDF (optionnel — affiché avec un bouton de téléchargement)">
+        <Field label="Document PDF">
           <div className="flex flex-wrap items-center gap-3">
             <input
               type="file"
@@ -1049,7 +1049,7 @@ function ArticleForm({ article, onClose }: { article: Article | null; onClose: (
           </div>
         </Field>
 
-        <Field label={form.pdf ? "Contenu (optionnel avec un PDF — le 1er paragraphe sert d'extrait)" : "Contenu (les lignes vides séparent les paragraphes — le 1er sert d'extrait)"}>
+        <Field label="Contenu">
           <textarea
             className={inputCls}
             rows={10}
