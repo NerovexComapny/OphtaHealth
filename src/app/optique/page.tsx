@@ -12,7 +12,7 @@ export default function OptiquePage() {
     <SectionProductsView
       section="optique"
       title={t("optique")}
-      comingSoon="Notre offre Optique (montures, verres et accessoires) sera bientôt disponible sur cette page. En attendant, notre équipe reste à votre disposition pour toute demande."
+      subtitle="Notre offre Optique (montures, verres et accessoires) sera bientôt disponible sur cette page. En attendant, notre équipe reste à votre disposition pour toute demande."
       icon="eye"
     />
   );
